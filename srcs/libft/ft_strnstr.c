@@ -3,30 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:31:51 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:31:52 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:27:08 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t size)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	s2_len;
+	size_t	i;
+	size_t	j;
+	char	*new_h;
 
-	s2_len = ft_strlen(s2);
-	if (s2_len == 0)
-		return ((char *)s1);
-	while (*s1 != '\0' && size >= s2_len)
+	i = 0;
+	new_h = (char *)haystack;
+	if (*needle == '\0')
+		return (new_h);
+	while (i < len && new_h[i] != '\0')
 	{
-		if (*s1 == *s2 && !ft_memcmp(s1, s2, s2_len))
+		if (new_h[i] == needle[0])
 		{
-			return ((char *)s1);
+			j = 0;
+			while (needle[j] != '\0' && new_h[i + j] != '\0' && (i + j) < len)
+			{
+				if (needle[j] != new_h[i + j])
+					break ;
+				j++;
+			}
+			if (needle[j] == '\0')
+				return (&new_h[i]);
 		}
-		s1++;
-		size--;
+		i++;
 	}
 	return (NULL);
 }

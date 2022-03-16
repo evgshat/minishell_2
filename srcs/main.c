@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:39:12 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:28:18 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:43:28 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "my_shell.h"
 #include <stdio.h>
 
-void	routine_parsing_executing(t_main *prmtrs)
+void	routine_parsing(t_main *prmtrs)
 {
 	int		parinsg_validation_result;
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv, char **env)
 	if (argc > 1)
 		return (1);
 	(void)argv;
-	create_env_lst(&prmtrs, env);
-	routine_parsing_executing(&prmtrs);
+	create_env(&prmtrs, env);
+	routine_parsing(&prmtrs);
 	return (0);
 }

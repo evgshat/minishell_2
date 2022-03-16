@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:34:02 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:34:03 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:58:46 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_cmd_list_del(t_cmd_list *cmd_i, int (*del_str)(char **str),
 		(*del_str)(&cmd_i->orig_cmnd_str);
 		(*del_str)(&cmd_i->copy_cmnd_str);
 		(*del_arr)(&cmd_i->cmnd_words);
-		(*del_str)(&cmd_i->before_redirect);
-		(*del_str)(&cmd_i->after_redirect);
+		(*del_str)(&cmd_i->b_red);
+		(*del_str)(&cmd_i->a_red);
 	}
 	if (cmd_i != NULL)
 		free(cmd_i);

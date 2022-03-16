@@ -3,39 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:30:26 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:30:27 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:22:13 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t size)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*ptr_dst;
-	unsigned char	*ptr_src;
+	unsigned char	*new_d;
+	unsigned char	*new_s;
+	size_t			n;
 
-	if (src == NULL && dst == NULL)
+	new_d = (unsigned char *)dst;
+	new_s = (unsigned char *)src;
+	n = len;
+	if (new_d < new_s)
+		ft_memcpy(new_d, new_s, len);
+	else if (new_d > new_s)
 	{
-		return (NULL);
-	}
-	ptr_dst = (unsigned char *)dst;
-	ptr_src = (unsigned char *)src;
-	if (ptr_dst < ptr_src)
-	{
-		while (size--)
+		while (len-- > 1)
 		{
-			*ptr_dst++ = *ptr_src++;
+			new_d++;
+			new_s++;
 		}
+		while (n-- > 0)
+			*(new_d--) = *(new_s--);
+		new_d = (unsigned char *)dst;
 	}
-	if (ptr_dst >= ptr_src)
-	{
-		while (size--)
-		{
-			ptr_dst[size] = ptr_src[size];
-		}
-	}
-	return (dst);
+	return (new_d);
 }

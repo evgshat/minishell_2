@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:28:12 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:28:18 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:09:53 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	get_next_line(int fd, char **line)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || line == NULL)
 		return (ERROR);
-	if (gnl_check_or_creat_buf(fd, buf) == ERROR)
+	if (gnl_ch_or_creat_buf(fd, buf) == ERROR)
 		return (ERROR);
 	*line = NULL;
 	return (gnl_read_line(fd, buf, line));
 }
 
-int	gnl_check_or_creat_buf(int fd, char **buf)
+int	gnl_ch_or_creat_buf(int fd, char **buf)
 {
 	if (buf[fd] == NULL)
 	{

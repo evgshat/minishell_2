@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:29:01 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:29:02 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:19:18 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int value)
+int	ft_isascii(int ch)
 {
-	if (value >= 0 && value <= 127)
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+	int	res;
+
+	res = 0;
+	if (127 >= ch && ch >= 0)
+		res = 1;
+	return (res);
 }

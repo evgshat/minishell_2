@@ -3,32 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:30:09 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:30:18 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:17:19 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *arr1, const void *arr2, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*ptr_arr1;
-	unsigned char	*ptr_arr2;
+	unsigned char	*new_s1;
+	unsigned char	*new_s2;
+	size_t			i;
 
-	ptr_arr1 = (unsigned char *)arr1;
-	ptr_arr2 = (unsigned char *)arr2;
-	if (ptr_arr1 == NULL || ptr_arr2 == NULL)
-		return (-1);
-	while (size--)
+	i = 0;
+	new_s1 = (unsigned char *)s1;
+	new_s2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		if (*ptr_arr1 != *ptr_arr2)
-		{
-			return (*ptr_arr1 - *ptr_arr2);
-		}
-		ptr_arr1++;
-		ptr_arr2++;
+		if (new_s1[i] > new_s2[i])
+			return (new_s1[i] - new_s2[i]);
+		if (new_s1[i] < new_s2[i])
+			return (new_s1[i] - new_s2[i]);
+		i++;
 	}
 	return (0);
 }

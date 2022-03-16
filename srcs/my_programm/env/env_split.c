@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:33:41 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:33:42 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:21:18 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_shell.h"
 
-void	count_words_check_equality(char const *s,
-										 int *n_words, int *flag_empty_second)
+void	count_words_ch_equality(char const *s,
+										int *n_words, int *flag_empty_second)
 {
 	*n_words = 1;
 	while (*s != '\0')
@@ -39,7 +39,7 @@ static char	**malloc_arr(char const *s, int *n_words, int *flag_empty_second)
 
 	if (s == NULL)
 		return (NULL);
-	count_words_check_equality(s, n_words, flag_empty_second);
+	count_words_ch_equality(s, n_words, flag_empty_second);
 	arr = (char **)malloc(sizeof(char *) * (*n_words + 1));
 	if (arr == NULL)
 		return (NULL);

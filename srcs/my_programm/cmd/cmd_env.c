@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:34:32 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:07:51 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:35:59 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_shell.h"
 
-int	print_errno_env(char *str, t_main *prmtrs, int rtrn_value)
-{
-	ft_putstr_fd("env: ", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putendl_fd(strerror(errno), 2);
-	prmtrs->exit_status = 1;
-	return (rtrn_value);
-}
+static int	print_errno_env(char *str, t_main *prmtrs, int rtrn_value);
 
 int	cmd_env(char **cmnd_words, t_env_list *env_head, int fd_out,
 															t_main *prmtrs)
@@ -42,4 +34,14 @@ int	cmd_env(char **cmnd_words, t_env_list *env_head, int fd_out,
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+static int	print_errno_env(char *str, t_main *prmtrs, int rtrn_value)
+{
+	ft_putstr_fd("env: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putendl_fd(strerror(errno), 2);
+	prmtrs->exit_status = 1;
+	return (rtrn_value);
 }

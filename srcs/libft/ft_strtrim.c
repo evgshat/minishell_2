@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:32:00 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:32:01 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:27:48 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*s;
-	int		i;
-	int		start_index;
+	char	*s2;
+	char	*res;
+	char	*r;
 
-	if (s1 == NULL)
+	while ((*s1 != '\0') && (ft_strchr(set, *s1) != NULL))
+		s1++;
+	s2 = (char *)s1;
+	while (*s2 != '\0')
+		s2++;
+	s2--;
+	while ((s2 > s1) && (ft_strchr(set, *s2) != NULL))
+		s2--;
+	res = malloc(s2 - s1 + 2);
+	if (res == NULL)
 		return (NULL);
-	i = 0;
-	while (ft_strchr(set, s1[i]) != NULL && s1[i] != '\0')
+	r = res;
+	while (s1 <= s2)
 	{
-		i++;
+		*r = *s1;
+		s1++;
+		r++;
 	}
-	start_index = i;
-	while (s1[i] != '\0')
-	{
-		i++;
-	}
-	i--;
-	while (ft_strchr(set, s1[i]) != NULL && i > start_index)
-	{
-		i--;
-	}
-	s = ft_substr(s1, start_index, i - start_index + 1);
-	if (s == NULL)
-		return (NULL);
-	return (s);
+	*r = '\0';
+	return (res);
 }

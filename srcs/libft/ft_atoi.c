@@ -3,79 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:28:24 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:28:24 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:15:35 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_space(const char *str)
+int	ft_atoi(const char *string)
 {
-	if (*str == ' '
-		|| *str == '\f'
-		|| *str == '\n'
-		|| *str == '\r'
-		|| *str == '\t'
-		|| *str == '\v')
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
-}
+	int				i;
+	int				sign;
+	long int		res;
 
-static int	plus_or_minus(int k_minus)
-{
-	if (k_minus % 2 == 0)
-		return (1);
-	else
-		return (-1);
-}
-
-static int	ckeck_supremum_infinum(long return_number, int k_minus_plus)
-{
-	if ((return_number > 2147483647 && k_minus_plus == 0)
-		|| (return_number >= 2147483648 && k_minus_plus == 1))
-	{
-		if (k_minus_plus == 1)
-			return (1);
-		else
-			return (-1);
-	}
-	else
-		return (0);
-}
-
-int	ft_atoi(const char *str)
-{
-	int		i;
-	long	return_number;
-	int		k_minus_plus;
-
-	return_number = 0;
 	i = 0;
-	while (is_space(&str[i]))
+	res = 0;
+	sign = 0;
+	if ((string[i] < '0' || string[i] > '9')
+		&& (string[i] < '\t' || string[i] > '\r')
+		&& (string[i] != ' ') && (string[i] != '-') && (string[i] != '+'))
+		return (0);
+	while ((string[i] >= '\t' && string[i] <= '\r') || (string[i] == ' ')
+		|| (string[i] == '0'))
 		i++;
-	k_minus_plus = 0;
-	if (str[i] == '-' || str[i] == '+')
+	if (string[i] == '+' || string[i] == '-')
 	{
-		if (str[i] == '-')
-			k_minus_plus++;
+		if (string[i] == '-')
+			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (ckeck_supremum_infinum(return_number, k_minus_plus) == 1)
-			return (1);
-		if (ckeck_supremum_infinum(return_number, k_minus_plus) == -1)
-			return (-1);
-		return_number = str[i] + return_number * 10 - '0';
-		i++;
-	}
-	return (plus_or_minus(k_minus_plus) * return_number);
+	while (string[i] >= '0' && string[i] <= '9')
+		res = res * 10 + (string[i++] - '0');
+	if (sign == -1)
+		return (res * sign);
+	return ((int)res);
 }

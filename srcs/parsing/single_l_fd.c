@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_l_fd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:38:43 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:23:55 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:01:49 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	single_l_fd(t_cmd_list *tmp)
 {
-	tmp->fd_in = open(tmp->after_redirect, O_RDONLY);
+	tmp->fd_in = open(tmp->a_red, O_RDONLY);
 	if (tmp->fd_in < 0)
 		return (NOT_EXECUTE);
 	return (EXECUTE);

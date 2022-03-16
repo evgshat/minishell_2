@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_execve_or_builtins.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:34:12 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:34:13 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:58:54 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	pipe_execve_or_builtins(t_cmd_list *cmd_i, t_main *prmts)
 	}
 	else if (pid == 0)
 	{
-		redirect_cmd_fd(cmd_i);
+		red_cmd_fd(cmd_i);
 		execute_execve(cmd_i, prmts);
 		free_prmtrs(prmts, 0);
 	}

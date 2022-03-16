@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:15:45 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:15:54 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:19:04 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	cmd_export(char **cmnd_words, t_env_list **env_head, int fd_out)
 		while (cmnd_words[i] != NULL)
 		{
 			name = ft_strdup_sep(cmnd_words[i], '=');
-			if (check_env_name_exists(name, *env_head) == true)
+			if (ch_env_name_exists(name, *env_head) == true)
 				unset_delete_lst_element(name, env_head);
 			ft_free_str(&name);
 			arr = env_split(cmnd_words[i]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:32:04 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:32:05 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:28:05 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
-	char	*buf;
+	char	*new_s;
+	size_t	chet;
+	size_t	cnt;
 
-	if (s == NULL)
-		return (NULL);
-	if (start >= ft_strlen(s))
-	{
+	chet = 0;
+	cnt = ft_strlen(s);
+	if (start >= cnt)
 		return (ft_strdup(""));
-	}
-	substr = (char *)malloc(len * sizeof(char) + 1);
-	if (substr == NULL)
-	{
+	new_s = (char *) malloc(len + 1);
+	if (new_s == 0)
 		return (NULL);
-	}
-	buf = substr;
-	while (len-- && s[start] != '\0')
+	if (new_s != 0)
 	{
-		*substr = s[start++];
-		substr++;
+		while (chet < len)
+		{
+			new_s[chet] = s[start + chet];
+			chet++;
+		}
+		new_s[chet] = '\0';
+		return (new_s);
 	}
-	*substr = '\0';
-	return (buf);
+	else
+	{
+		return (0);
+	}
 }

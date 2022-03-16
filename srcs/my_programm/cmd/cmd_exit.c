@@ -3,16 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:10:59 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:11:12 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:20:52 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_shell.h"
 
-long long	atoi_for_exit(char *str)
+static long long	atoi_for_exit(char *str);
+static int			chech_str_is_digits(char *str);
+static int			one_argumnet_exit(char *arg, t_main *prmtrs);
+static int			several_arguments_exit(t_main *prmtrs);
+
+int	cmd_exit(char **cmnd_words, t_main *prmtrs)
+{
+	if (cmnd_words[1] == NULL)
+	{
+		ft_putstr_fd("exit", 1);
+		free_prmtrs(prmtrs, SUCCESSFUL_EXIT);
+		exit(prmtrs->exit_status);
+	}
+	if (cmnd_words[2] == NULL)
+		one_argumnet_exit(cmnd_words[1], prmtrs);
+	else
+		several_arguments_exit(prmtrs);
+	return (0);
+}
+
+static long long	atoi_for_exit(char *str)
 {
 	int			i;
 	long long	return_number;
@@ -40,7 +60,7 @@ long long	atoi_for_exit(char *str)
 	return (k_minus_plus * return_number);
 }
 
-int	chech_str_is_digits(char *str)
+static int	chech_str_is_digits(char *str)
 {
 	int	i;
 	int	exit_flag;
@@ -60,7 +80,7 @@ int	chech_str_is_digits(char *str)
 	return (true);
 }
 
-int	one_argumnet_exit(char *arg, t_main *prmtrs)
+static int	one_argumnet_exit(char *arg, t_main *prmtrs)
 {
 	long long	exit_number;
 
@@ -82,24 +102,9 @@ int	one_argumnet_exit(char *arg, t_main *prmtrs)
 	return (0);
 }
 
-int	several_arguments_exit(t_main *prmtrs)
+static int	several_arguments_exit(t_main *prmtrs)
 {
 	prmtrs->exit_status = 1;
 	printf("my_shell: exit: too many arguments\n");
-	return (0);
-}
-
-int	cmd_exit(char **cmnd_words, t_main *prmtrs)
-{
-	if (cmnd_words[1] == NULL)
-	{
-		ft_putstr_fd("exit", 1);
-		free_prmtrs(prmtrs, SUCCESSFUL_EXIT);
-		exit(prmtrs->exit_status);
-	}
-	if (cmnd_words[2] == NULL)
-		one_argumnet_exit(cmnd_words[1], prmtrs);
-	else
-		several_arguments_exit(prmtrs);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   double_l_fd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:37:01 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:22:42 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:00:50 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	double_l_fd(t_cmd_list *tmp)
 
 	fd = open(".tmp", O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
 	line = readline("> ");
-	while (ft_strcmp(line, tmp->after_redirect))
+	while (ft_strcmp(line, tmp->a_red))
 	{
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);

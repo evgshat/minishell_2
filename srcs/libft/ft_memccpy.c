@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:30:01 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:30:01 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:16:42 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int value, size_t size)
+void	*ft_memccpy(void *destination, const void *source, int c, size_t n)
 {
-	unsigned char		*ptr_dst;
-	const unsigned char	*ptr_src;
-	unsigned char		copy_value;
+	unsigned char		*dest;
+	unsigned char		*src;
+	unsigned char		ch;
+	size_t				i;
 
-	if (src == NULL && dst == NULL)
+	dest = (unsigned char *)destination;
+	src = (unsigned char *)source;
+	ch = (unsigned char)c;
+	i = 0;
+	while (i < n)
 	{
-		return (NULL);
-	}
-	ptr_dst = (unsigned char *)dst;
-	ptr_src = (const unsigned char *)src;
-	copy_value = (unsigned char)value;
-	while (size--)
-	{
-		if (*ptr_src == copy_value)
+		if (src[i] == ch)
 		{
-			*ptr_dst = *ptr_src;
-			ptr_dst++;
-			return (ptr_dst);
+			dest[i] = src[i];
+			i++;
+			return (&dest[i]);
 		}
-		*ptr_dst++ = *ptr_src++;
+		dest[i] = src[i];
+		i++;
 	}
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:27:23 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:27:24 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:31:30 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int					ft_toupper(int value);
 int					ft_tolower(int value);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *s1);
-
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -70,7 +69,6 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-
 size_t				ft_strlen_sep(const char *str, int value);
 int					ft_free_str(char **s);
 void				*ft_free_str_arr(char ***arr);

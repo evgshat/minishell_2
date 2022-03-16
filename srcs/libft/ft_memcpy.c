@@ -3,32 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:30:22 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:30:23 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:16:25 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char		*ptr_dst;
-	const char	*ptr_src;
+	size_t			i;
+	unsigned char	*new_d;
+	unsigned char	*new_s;
 
 	if (src == NULL && dst == NULL)
+		return (0);
+	i = 0;
+	new_d = (unsigned char *)dst;
+	new_s = (unsigned char *)src;
+	while (i < n)
 	{
-		return (NULL);
+		new_d[i] = new_s[i];
+		i++;
 	}
-	ptr_dst = (char *)dst;
-	ptr_src = (const char *)src;
-	while (size != 0)
-	{
-		*ptr_dst = *ptr_src;
-		ptr_dst++;
-		ptr_src++;
-		size--;
-	}
-	return (dst);
+	return (new_d);
 }

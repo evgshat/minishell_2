@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creat_cmd_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:36:41 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:22:31 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:00:43 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_cmd_list	*cmd_list_new(char *orig_cmnd_str)
 		return (NULL);
 	p->orig_cmnd_str = orig_cmnd_str;
 	p->copy_cmnd_str = NULL;
-	p->before_redirect = NULL;
-	p->after_redirect = NULL;
+	p->b_red = NULL;
+	p->a_red = NULL;
 	p->cmnd_words = NULL;
 	p->is_builtin = false;
 	p->is_double_r = false;

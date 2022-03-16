@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:27:35 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:27:44 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:58:11 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_cmd_list
 	char				*orig_cmnd_str;
 	char				*copy_cmnd_str;
 	char				**cmnd_words;
-	char				*before_redirect;
-	char				*after_redirect;
+	char				*b_red;
+	char				*a_red;
 	bool				is_builtin;
 	bool				is_double_r;
 	bool				is_double_l;

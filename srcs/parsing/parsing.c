@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:24:57 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 19:24:58 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:54:56 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	parsing(t_main *prmtrs)
 		return (NOT_EXECUTE);
 	}
 	add_history(prmtrs->orig_line_input);
-	if (check_input(line, prmtrs) == NOT_EXECUTE)
+	if (ch_input(line, prmtrs) == NOT_EXECUTE)
 	{
 		ft_free_str(&(prmtrs->orig_line_input));
 		return (NOT_EXECUTE);

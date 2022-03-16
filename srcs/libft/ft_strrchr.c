@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:31:55 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:31:56 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:27:29 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int value)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		len;
-	int		i;
-	char	*buf;
+	char	*new_s;
+	char	*a;
+	char	ch;
 
-	len = ft_strlen(str);
-	buf = NULL;
-	i = 0;
-	while (i < len)
+	new_s = (char *)s;
+	a = (char *)s;
+	ch = (char)c;
+	if (ch == '\0')
 	{
-		if (*str == (char)value)
-		{
-			buf = (char *)str;
-		}
-		str++;
-		i++;
+		while (*new_s)
+			new_s++;
+		return (new_s);
 	}
-	if ((char)value == '\0')
+	while (*new_s != '\0')
+		new_s++;
+	new_s--;
+	while (new_s >= a)
 	{
-		return ((char *)str);
+		if (*new_s == ch)
+			return (new_s);
+		new_s--;
 	}
-	return (buf);
+	return (0);
 }

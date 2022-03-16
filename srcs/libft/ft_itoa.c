@@ -3,52 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:29:15 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:29:16 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:20:02 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_nbrlen(int n)
+static char	*int_char(int sign, int cnt, long n)
 {
-	int	i;
+	int		ost;
+	char	*str;
 
-	i = 1;
-	while (n / 10 != 0)
+	ost = 0;
+	str = malloc(cnt + 1);
+	if (str == 0)
+		return (NULL);
+	str[cnt] = '\0';
+	if (sign == 1)
+		str[0] = '-';
+	if (n == 0)
 	{
-		n /= 10;
-		i++;
+		str[0] = '0';
+		return (str);
 	}
-	return (i);
+	while (cnt >= 0)
+	{
+		ost = n % 10;
+		str[cnt - 1] = ost + '0';
+		n = n / 10;
+		if (n == 0)
+			break ;
+		cnt--;
+	}
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*s;
-	size_t		len;
-	long int	ln;
+	int		cnt;
+	int		sign;
+	long	cpy_n;
+	char	*str;
 
-	ln = n;
-	if (n >= 0)
-		len = ft_nbrlen(n);
-	else
-		len = ft_nbrlen(n) + 1;
-	s = (char *)ft_calloc(len + 1, sizeof(char));
-	if (s == NULL)
-		return (NULL);
-	s[len] = '\0';
+	sign = 0;
+	cnt = 0;
+	cpy_n = n;
 	if (n < 0)
 	{
-		s[0] = '-';
-		ln = (-1) * ln;
+		cnt++;
+		sign = 1;
+		cpy_n = cpy_n * (-1);
 	}
-	while (len-- > 0 && s[len] != '-')
+	else if (n == 0)
+		cnt = 1;
+	while (n != 0)
 	{
-		s[len] = ln % 10 + '0';
-		ln = ln / 10;
+		n = n / 10;
+		cnt++;
 	}
-	return (s);
+	str = int_char(sign, cnt, cpy_n);
+	return (str);
 }

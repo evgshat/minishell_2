@@ -3,34 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcharlet <lcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:31:47 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/03/16 18:31:47 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:26:52 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr_str1;
-	unsigned char	*ptr_str2;
+	unsigned char	*new_s1;
+	unsigned char	*new_s2;
+	size_t			i;
 
-	ptr_str1 = (unsigned char *)str1;
-	ptr_str2 = (unsigned char *)str2;
-	while (size--)
-	{
-		if (*ptr_str1 != *ptr_str2)
-		{
-			return (*ptr_str1 - *ptr_str2);
-		}
-		if (*ptr_str1 == '\0' && *ptr_str2 == '\0')
-		{
-			return (*ptr_str1 - *ptr_str2);
-		}
-		ptr_str1++;
-		ptr_str2++;
-	}
-	return (0);
+	i = 0;
+	new_s1 = (unsigned char *)s1;
+	new_s2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while ((i < n - 1) && (new_s1[i] != '\0') && (new_s2[i] != '\0')
+		&& (new_s1[i] == new_s2[i]))
+		i++;
+	return (new_s1[i] - new_s2[i]);
 }
